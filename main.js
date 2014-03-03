@@ -14,7 +14,7 @@ var main_state = {
         this.game.load.image('bird', 'assets/bird.png');
 
         this.game.load.image('pipe', 'assets/pipe.png');
-        this.pipes.createMultiple(20, 'pipe');
+    
     },
 
     create: function() {
@@ -29,6 +29,9 @@ var main_state = {
         // Call the 'jump' function when the spacekey is hit
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this);
+
+        this.pipes = this.game.add.group();
+        this.pipes.createMultiple(20, 'pipe');
 
         this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);
 
